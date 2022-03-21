@@ -2,39 +2,5 @@ spring:
   application:    name: ms-api-gateway
   profiles:
     active: dev
-  #config:
-    #import: configserver:http://user:s3cr3t@172.18.0.2:8081
-  cloud:    gateway:      routes:      - id: ms-customers
-        uri: MS-CUSTOMERS
-        predicates:
-          PATH=/customers/**
-      - id: ms-bank-accounts
-        uri: lb://MS-BANK-ACCOUNTS
-        predicates:          PATH=/bank-accounts/**
-      - id: ms-bank-accounts
-        uri: lb://MS-CREDITS
-        predicates:
-          PATH=/credits/**          
-#===========================================================================
-# CONFIGURACION CONTEXTO
-#===========================================================================
-server:
-  port: ${SERVER_PORT:8081}
-
-#===========================================================================
-# EUREKA
-#===========================================================================
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_HOSTNAME}:${EUREKA_PORT}/eureka
-
-#===========================================================================
-# LOGGING
-#===========================================================================
-log:
-  path:${LOG_PATH}
-  
-#===========================================================================
-# GATEWAY
-#===========================================================================
+  config:
+    import: configserver:http://user:s3cr3t@172.18.0.2:8081     

@@ -3,7 +3,8 @@ services:
   app:
     build: .
     image: bootcamp/ms-api-gateway
-    container_name: api-gateway
+    container_name: ms-api-gateway
+    hostname: MS-API-GATEWAY
     ports:
       - "${APP_PORT:-8092}:${APP_PORT_CONTAINER:-8081}"
     environment:
@@ -16,5 +17,4 @@ services:
 
 networks:
   main-network:
-    external:
       name: $NETWORK_NAME
